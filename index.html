@@ -10,42 +10,6 @@
   <!-- Primary SEO -->
   <meta name="description"
     content="Biotech manufacturing and MSAT engineer specializing in GMP operations, equipment reliability, deviation reduction, Lean Six Sigma Black Belt, and data-driven continuous improvement.">
-  <meta name="keywords"
-    content="Biotech manufacturing engineer, MSAT, GMP manufacturing, Lean Six Sigma Black Belt, Process Engineer, Pharmaceutical Manufacturing, Deviation reduction, Process Optimization, Data Analytics">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Jacob Nichter • Biotech Manufacturing & MSAT Engineer">
-  <meta property="og:description"
-        content="Biotech manufacturing leader with Lean Six Sigma Black Belt. GMP, MSAT, process optimization, deviation reduction, equipment reliability.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jnichter.com/">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jacob Nichter • Biotech Manufacturing & MSAT Engineer">
-  <meta name="twitter:description"
-        content="GMP manufacturing excellence. Lean Six Sigma Black Belt. MSAT, process optimization, data analytics for manufacturing leadership.">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Jacob Nichter",
-    "url": "https://jnichter.com",
-    "jobTitle": "Biotech Manufacturing Engineer / MSAT",
-    "description": "Biotech manufacturing and MSAT engineer specializing in GMP operations, continuous improvement, and Lean Six Sigma Black Belt methodology.",
-    "knowsAbout": [
-      "GMP Manufacturing", "Biologics", "Process Optimization",
-      "MSAT", "Lean Six Sigma", "Deviation Reduction",
-      "CAPA", "Root Cause Analysis", "SAP", "Data Analytics"
-    ],
-    "sameAs": [
-      "https://www.linkedin.com/in/jnichter",
-      "mailto:jacob@jnichter.com"
-    ]
-  }
-  </script>
 
   <style>
     body {
@@ -88,3 +52,90 @@
       display: flex;
       gap: 1.4em;
     }
+
+    /* ✦ Hero animation ✦ */
+    h1, h2, p, .links {
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+    }
+    h1 { animation-delay: 0.1s; }
+    h2 { animation-delay: 0.35s; }
+    p { animation-delay: 0.65s; }
+    .links { animation-delay: 0.95s; }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Button styling */
+    a {
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.6em 1.4em;
+      border: 1px solid white;
+      border-radius: 6px;
+      color: white;
+      transition: all 0.25s ease;
+    }
+
+    /* ✦ Primary glowing CTA (RESUME button) ✦ */
+    .primary {
+      background: white;
+      color: black;
+      font-weight: 600;
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.45);
+      animation: pulse 2.3s infinite ease-in-out;
+    }
+
+    .primary:hover {
+      background: #E6E6E6;
+      color: black;
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 0 26px rgba(255, 255, 255, 0.68);
+    }
+
+    /* Glow pulse animation */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 14px rgba(255, 255, 255, 0.35); }
+      50% { box-shadow: 0 0 32px rgba(255, 255, 255, 0.65); }
+      100% { box-shadow: 0 0 14px rgba(255, 255, 255, 0.35); }
+    }
+
+    /* Hover effect for secondary buttons */
+    a:not(.primary):hover {
+      background: white;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Jacob Nichter</h1>
+  <h2>Biotech Manufacturing & MSAT Leader • Lean Six Sigma Black Belt</h2>
+
+  <p>
+    I optimize biopharmaceutical manufacturing by improving equipment reliability,
+    reducing deviations and downtime, and accelerating batch readiness in GMP environments.
+    Data fluent. Floor-first leadership.
+  </p>
+
+  <div class="links">
+    <a href="/Jacob_Nichter_Resume.pdf" class="primary" target="_blank" rel="noopener">
+      Résumé (PDF)
+    </a>
+    <a href="https://www.linkedin.com/in/jnichter" target="_blank">
+      LinkedIn
+    </a>
+    <a href="mailto:jacob@jnichter.com">
+      Email Me
+    </a>
+  </div>
+</body>
+</html>
