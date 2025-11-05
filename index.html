@@ -50,10 +50,12 @@
     .links {
       margin-top: 1.8em;
       display: flex;
-      gap: 1.4em;
+      gap: 1.2em;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    /* ✦ Hero animation ✦ */
+    /* Hero animation */
     h1, h2, p, .links {
       opacity: 0;
       animation: fadeUp 1s ease forwards;
@@ -64,17 +66,11 @@
     .links { animation-delay: 0.95s; }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Button styling */
+    /* Button styles */
     a {
       text-decoration: none;
       font-size: 1.1rem;
@@ -85,7 +81,7 @@
       transition: all 0.25s ease;
     }
 
-    /* ✦ Primary glowing CTA (RESUME button) ✦ */
+    /* Primary glowing CTA */
     .primary {
       background: white;
       color: black;
@@ -101,14 +97,14 @@
       box-shadow: 0 0 26px rgba(255, 255, 255, 0.68);
     }
 
-    /* Glow pulse animation */
+    /* Glow animation */
     @keyframes pulse {
       0% { box-shadow: 0 0 14px rgba(255, 255, 255, 0.35); }
       50% { box-shadow: 0 0 32px rgba(255, 255, 255, 0.65); }
       100% { box-shadow: 0 0 14px rgba(255, 255, 255, 0.35); }
     }
 
-    /* Hover effect for secondary buttons */
+    /* Secondary buttons */
     a:not(.primary):hover {
       background: white;
       color: black;
@@ -118,12 +114,12 @@
 
 <body>
   <h1>Jacob Nichter</h1>
-  <h2>Biotech Manufacturing & MSAT Leader • Lean Six Sigma Black Belt</h2>
+  <h2>Biotech Manufacturing and MSAT Leader • Lean Six Sigma Black Belt</h2>
 
   <p>
     I optimize biopharmaceutical manufacturing by improving equipment reliability,
     reducing deviations and downtime, and accelerating batch readiness in GMP environments.
-    Data fluent. Floor-first leadership.
+    Data fluent. Floor first leadership.
   </p>
 
   <div class="links">
@@ -132,6 +128,9 @@
     </a>
     <a href="https://www.linkedin.com/in/jnichter" target="_blank">
       LinkedIn
+    </a>
+    <a href="https://www.credly.com/users/jnichter" target="_blank" rel="noopener">
+      Credly Badges
     </a>
     <a href="mailto:jacob@jnichter.com">
       Email Me
