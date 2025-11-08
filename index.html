@@ -132,6 +132,43 @@
     </div>
   </section>
 
+  <!-- Featured Badges -->
+  <section id="featured-badges" class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900/40">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold">Featured credentials</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <!-- Badge 1 -->
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float flex items-center gap-4">
+          <a href="https://www.credly.com/badges/YOUR-BADGE-1" target="_blank" rel="noopener" aria-label="Verify badge 1 on Credly">
+            <img src="/assets/credly/badge-1.png" width="96" height="96" loading="lazy" alt="Credential badge 1" class="rounded-xl" />
+          </a>
+          <div>
+            <h3 class="font-medium">Credential Title #1</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Short description of what this credential certifies or represents.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <a href="https://www.credly.com/badges/YOUR-BADGE-1" target="_blank" class="inline-flex items-center rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-sm">Verify on Credly</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Badge 2 -->
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float flex items-center gap-4">
+          <a href="https://www.credly.com/badges/YOUR-BADGE-2" target="_blank" rel="noopener" aria-label="Verify badge 2 on Credly">
+            <img src="/assets/credly/badge-2.png" width="96" height="96" loading="lazy" alt="Credential badge 2" class="rounded-xl" />
+          </a>
+          <div>
+            <h3 class="font-medium">Credential Title #2</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Brief description of this certification or achievement.</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <a href="https://www.credly.com/badges/YOUR-BADGE-2" target="_blank" class="inline-flex items-center rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-sm">Verify on Credly</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="mt-4 text-sm text-slate-500">See more credentials on <a href="https://www.linkedin.com/in/jacobnichter" target="_blank" class="link-underline">LinkedIn</a>.</p>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900/40">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -171,7 +208,7 @@
     const toggle = document.getElementById('themeToggle');
     const root = document.documentElement;
     function applyTheme() {
-      const theme = localStorage.getItem('theme') || 
+      const theme = localStorage.getItem('theme') ||
         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       root.classList.toggle('dark', theme === 'dark');
       toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
