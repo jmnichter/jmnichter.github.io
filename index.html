@@ -55,7 +55,7 @@
     };
   </script>
 
-  <!-- Google Analytics (real ID) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYTTJTHTTL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -69,14 +69,75 @@
     .hover-float:hover {transform:translateY(-6px); box-shadow:0 14px 34px rgba(0,0,0,.10)}
     .link-underline {background-image:linear-gradient(currentColor,currentColor); background-position:0 100%; background-repeat:no-repeat; background-size:0% 2px; transition:background-size .28s ease}
     .link-underline:hover {background-size:100% 2px}
+
+    /* Reveal-on-scroll base */
     .fade-in {opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
     .fade-in.show {opacity:1; transform:translateY(0)}
+    /* small, tasteful staggers */
+    .delay-1 { transition-delay: .08s; }
+    .delay-2 { transition-delay: .16s; }
+    .delay-3 { transition-delay: .24s; }
+    .delay-4 { transition-delay: .32s; }
+    .delay-5 { transition-delay: .40s; }
+
     .ttwrap {position:relative; display:inline-flex; align-items:center}
     .tt {position:absolute; left:50%; top:100%; margin-top:.5rem; transform:translate(-50%,0) scale(.95);
          background:rgba(2,6,23,.96); color:#fff; padding:.375rem .5rem; border-radius:.5rem; font-size:.75rem; line-height:1;
          white-space:nowrap; box-shadow:0 10px 20px rgba(0,0,0,.25); opacity:0; pointer-events:none; transition:opacity .15s, transform .15s; z-index:40}
     .ttwrap:hover .tt, .ttwrap:focus-within .tt {opacity:1; transform:translate(-50%,0) scale(1)}
-    @media (prefers-reduced-motion: reduce) {.hover-float, .link-underline, .fade-in, .tt {transition:none}}
+
+    @media (prefers-reduced-motion: reduce) {
+      .hover-float, .link-underline, .fade-in, .tt {transition:none}
+    }
+
+    /* Hero entrance animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-title, .hero-sub {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    body.ready .hero-title {
+      animation: fadeUp .8s cubic-bezier(.22,.61,.36,1) .05s forwards, glowPulse 2.2s ease-out .1s 1;
+    }
+    body.ready .hero-sub {
+      animation: fadeUp .8s cubic-bezier(.22,.61,.36,1) .18s forwards;
+    }
+
+    /* Fade-glow behind hero name */
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 0 rgba(56,189,248,0); }
+      50% { text-shadow: 0 0 32px rgba(56,189,248,0.5); }
+      100% { text-shadow: 0 0 0 rgba(56,189,248,0); }
+    }
+
+    /* Shimmer animation for CTA buttons */
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .shimmer-once {
+      background-image: linear-gradient(110deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.25) 30%,
+        rgba(255,255,255,0) 60%);
+      background-size: 200% 100%;
+    }
+
+    /* Adaptive CTA glow based on theme */
+    @keyframes buttonGlowLight {
+      0% { box-shadow: 0 0 0 rgba(56,189,248,0); }
+      50% { box-shadow: 0 0 16px rgba(56,189,248,0.35); }
+      100% { box-shadow: 0 0 0 rgba(56,189,248,0); }
+    }
+    @keyframes buttonGlowDark {
+      0% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+      50% { box-shadow: 0 0 18px rgba(255,255,255,0.45); }
+      100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+    }
+
   </style>
 </head>
 
@@ -100,52 +161,63 @@
   <section id="home" class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-sky-50 to-transparent dark:from-sky-900/20"></div>
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
-        Jacob Nichter — Senior Process Engineer in Biotech Manufacturing & Process Development
+      <h1 class="text-center">
+        <span class="hero-title block text-5xl sm:text-6xl font-extrabold tracking-tight 
+                     bg-gradient-to-r from-sky-600 to-blue-400 dark:from-sky-300 dark:to-blue-200 
+                     text-transparent bg-clip-text">
+          Jacob Nichter
+        </span>
+        <span class="hero-sub mt-3 block text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-100">
+          Senior Process Engineer in Biotech Manufacturing &amp; Process Development
+        </span>
       </h1>
-      <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+      <p class="mt-6 text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto fade-in">
         I specialize in <strong>biotech manufacturing</strong> and <strong>process development</strong>, combining <strong>MSAT</strong> leadership with a <strong>Lean Six Sigma Black Belt</strong> to improve GMP reliability, yield, and cost. My approach blends engineering rigor, <strong>process optimization</strong>, and <strong>data analytics</strong> to drive continuous improvement and scalable results.
       </p>
       <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href="Jacob_Nichter_Resume.pdf" target="_blank" rel="noopener" class="hover-float inline-flex items-center rounded-xl bg-brand px-6 py-3 text-white text-base font-medium shadow-soft" data-analytics="resume-hero">📄 View Résumé (Biotech Process Optimization)</a>
-        <a href="https://www.linkedin.com/in/jnichter" target="_blank" rel="noopener" class="hover-float inline-flex items-center rounded-xl px-6 py-3 text-base bg-slate-900 text-white dark:bg-white dark:text-slate-900" data-analytics="linkedin-hero">Connect on LinkedIn</a>
+        <a href="Jacob_Nichter_Resume.pdf" target="_blank" rel="noopener"
+           class="hover-float inline-flex items-center rounded-xl bg-brand px-6 py-3 text-white text-base font-medium shadow-soft shimmer-once"
+           data-analytics="resume-hero">📄 View Résumé</a>
+        <a href="https://www.linkedin.com/in/jnichter" target="_blank" rel="noopener"
+           class="hover-float inline-flex items-center rounded-xl px-6 py-3 text-base bg-slate-900 text-white dark:bg-white dark:text-slate-900 shimmer-once"
+           data-analytics="linkedin-hero">Connect on LinkedIn</a>
       </div>
     </div>
   </section>
 
-  <!-- Work / Highlights -->
+  <!-- Work -->
   <section id="work" class="py-16 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-semibold mb-8">Selected highlights in GMP manufacturing & MSAT</h2>
+      <h2 class="text-2xl font-semibold mb-8 fade-in">Selected highlights in GMP manufacturing & MSAT</h2>
       <div class="grid md:grid-cols-3 gap-6">
-        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float">
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float fade-in delay-1">
           <h3 class="font-semibold">Pilot Plant Manager</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Led GMP operations and tech transfers across upstream and downstream processes; reduced deviations, improved right-first-time, and strengthened process control.
+            Led GMP operations and tech transfers; reduced deviations, improved right-first-time, and strengthened process control.
           </p>
         </article>
-        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float">
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float fade-in delay-2">
           <h3 class="font-semibold">Process Development Engineer</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Designed and analyzed DOE studies for yield and robustness; translated insights into SOP improvements, floor standards, and data-driven decision frameworks.
+            Designed DOE studies for yield and robustness; translated insights into SOP improvements and data-driven decision frameworks.
           </p>
         </article>
-        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float">
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float fade-in delay-3">
           <h3 class="font-semibold">Continuous Improvement</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Executed Lean Six Sigma projects to improve OEE and cycle time using SPC, CPV, and structured root-cause analysis; delivered measurable cost and throughput gains.
+            Executed Lean Six Sigma projects improving OEE and cycle time using SPC, CPV, and root-cause analysis; delivered measurable throughput gains.
           </p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Expertise (added to align with nav and keywords) -->
+  <!-- Expertise -->
   <section id="expertise" class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900/40">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-semibold">Expertise in Biotech Process Engineering</h2>
+      <h2 class="text-2xl font-semibold fade-in">Expertise in Biotech Process Engineering</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 text-sm">
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float">
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float fade-in delay-1">
           <h3 class="font-medium">GMP Manufacturing & MSAT</h3>
           <ul class="mt-2 list-disc list-inside text-slate-600 dark:text-slate-300">
             <li>Tech transfer and scale-up</li>
@@ -153,7 +225,7 @@
             <li>Deviation reduction & CAPA</li>
           </ul>
         </div>
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float">
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float fade-in delay-2">
           <h3 class="font-medium">Process Development & Optimization</h3>
           <ul class="mt-2 list-disc list-inside text-slate-600 dark:text-slate-300">
             <li>DOE and SPC for yield/robustness</li>
@@ -161,7 +233,7 @@
             <li>Right-first-time and reliability</li>
           </ul>
         </div>
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float">
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float fade-in delay-3">
           <h3 class="font-medium">Data Analytics & Leadership</h3>
           <ul class="mt-2 list-disc list-inside text-slate-600 dark:text-slate-300">
             <li>Python, SQL, Tableau, Excel</li>
@@ -170,102 +242,68 @@
           </ul>
         </div>
       </div>
-      <p class="mt-6 text-slate-600 dark:text-slate-300">
-        Keywords: senior process engineer, biotech manufacturing, process development, MSAT, Lean Six Sigma Black Belt, GMP, process optimization, data analytics.
-      </p>
     </div>
   </section>
 
   <!-- Credentials -->
   <section id="credentials" class="py-16 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-semibold">Credentials</h2>
+      <h2 class="text-2xl font-semibold fade-in">Credentials</h2>
       <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between">
+        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between fade-in delay-1">
           <span class="ttwrap">
             <a href="https://coursera.org/share/1d9734f636e039f1bd2d0d3aa2b45181" target="_blank" rel="noopener" class="link-underline font-medium" data-analytics="cert-lss">Lean Six Sigma Black Belt</a>
             <span class="tt">View verified Coursera certificate</span>
           </span>
           <span class="text-xs text-slate-500">Kennesaw State University</span>
         </li>
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between">
+        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between fade-in delay-2">
           <span class="ttwrap">
             <a href="https://coursera.org/share/97304e7376df4bfd6a7973f9401c034c" target="_blank" rel="noopener" class="link-underline font-medium" data-analytics="cert-rice-leadership">Leadership Development for Engineers</a>
             <span class="tt">View verified Coursera certificate</span>
           </span>
           <span class="text-xs text-slate-500">Rice University</span>
         </li>
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between">
+        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between fade-in delay-3">
           <span class="ttwrap">
             <a href="https://coursera.org/share/321017cf80f4b32496969e4c5259e974" target="_blank" rel="noopener" class="link-underline font-medium" data-analytics="cert-uiuc-stratlead">Strategic Leadership and Management</a>
             <span class="tt">View verified Coursera certificate</span>
           </span>
           <span class="text-xs text-slate-500">University of Illinois</span>
         </li>
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between">
+        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between fade-in delay-1">
           <span class="ttwrap">
             <a href="https://coursera.org/share/d0c143eb290173565d6e1e9ad7067405" target="_blank" rel="noopener" class="link-underline font-medium" data-analytics="cert-vu-genai">Generative AI Strategic Leader</a>
             <span class="tt">View verified Coursera certificate</span>
           </span>
           <span class="text-xs text-slate-500">Vanderbilt University</span>
         </li>
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between">
+        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between fade-in delay-2">
           <span class="ttwrap">
             <a href="https://coursera.org/share/2dbd695c45cc78b925990447e40fcc53" target="_blank" rel="noopener" class="link-underline font-medium" data-analytics="cert-nd-ethics">Ethical Leadership</a>
             <span class="tt">View verified Coursera certificate</span>
           </span>
           <span class="text-xs text-slate-500">University of Notre Dame</span>
         </li>
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between">
+        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between fade-in delay-3">
           <span class="ttwrap">
             <a href="https://coursera.org/share/1afa201eb71debdceaca7600f82b07d4" target="_blank" rel="noopener" class="link-underline font-medium" data-analytics="cert-wharton-bizanalytics">Business Analytics</a>
             <span class="tt">View verified Coursera certificate</span>
           </span>
           <span class="text-xs text-slate-500">UPenn Wharton</span>
         </li>
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between"><span>Data Science with Real World Data in Pharma</span><span class="text-xs text-slate-500">Genentech</span></li>
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between"><span>Drug Development Product Management</span><span class="text-xs text-slate-500">UC San Diego</span></li>
-        <li class="rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover-float flex items-center justify-between"><span>Leading People and Teams</span><span class="text-xs text-slate-500">University of Michigan</span></li>
       </ul>
-    </div>
-  </section>
-
-  <!-- Featured -->
-  <section id="featured" class="py-16 sm:py-20">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-semibold">Featured credentials</h2>
-      <div class="mt-8 grid md:grid-cols-2 gap-8">
-        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float flex items-start gap-6">
-          <a href="https://www.credly.com/badges/e9013411-d61d-4310-8358-c239f526d41a/public_url" target="_blank" rel="noopener" data-analytics="credly-gpm">
-            <img src="badge-1.png" width="160" height="160" loading="lazy" alt="Google Project Management & Professional Success Skills badge" class="rounded-xl shadow-md" />
-          </a>
-          <div>
-            <h3 class="font-medium text-lg">Google Project Management & Professional Success Skills</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Project planning, stakeholder communication, and execution supporting cross-functional biotech initiatives.</p>
-          </div>
-        </article>
-
-        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 hover-float flex items-start gap-6">
-          <a href="https://www.credly.com/badges/7ed3a42c-1d52-4e25-8994-4a1c23cf4326/public_url" target="_blank" rel="noopener" data-analytics="credly-gda">
-            <img src="badge-3.png" width="160" height="160" loading="lazy" alt="Google Data Analytics Professional Certificate badge" class="rounded-xl shadow-md" />
-          </a>
-          <div>
-            <h3 class="font-medium text-lg">Google Data Analytics Professional Certificate</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">SQL, Tableau, and analytics storytelling to inform GMP decisions and process improvement roadmaps.</p>
-          </div>
-        </article>
-      </div>
     </div>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900/40">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-semibold mb-4">Let’s connect</h2>
-      <p class="text-slate-600 dark:text-slate-300 max-w-lg mx-auto">
+      <h2 class="text-2xl font-semibold mb-4 fade-in">Let’s connect</h2>
+      <p class="text-slate-600 dark:text-slate-300 max-w-lg mx-auto fade-in delay-1">
         Reach out about <strong>biotech manufacturing</strong>, <strong>MSAT</strong>, <strong>process engineering</strong>, or <strong>leadership</strong> opportunities.
       </p>
-      <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+      <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm fade-in delay-2">
         <a href="mailto:jacob@jnichter.com" class="hover-float rounded-xl border border-slate-200 dark:border-slate-800 px-5 py-2 link-underline" data-analytics="email">jacob@jnichter.com</a>
         <a href="https://www.linkedin.com/in/jnichter" target="_blank" rel="noopener" class="hover-float rounded-xl border border-slate-200 dark:border-slate-800 px-5 py-2 link-underline" data-analytics="linkedin-contact">LinkedIn</a>
         <a href="Jacob_Nichter_Resume.pdf" target="_blank" rel="noopener" class="hover-float rounded-xl border border-slate-200 dark:border-slate-800 px-5 py-2 link-underline" data-analytics="resume-contact">Résumé (PDF)</a>
@@ -278,7 +316,7 @@
     <p>© <span id="year"></span> Jacob Nichter. All rights reserved. • <a href="https://github.com/jmnichter/jmnichter.github.io" target="_blank" rel="noopener" class="link-underline" data-analytics="github-source">Source</a></p>
   </footer>
 
-  <!-- Theme, year, reveals, click analytics -->
+  <!-- Theme, hero ready, reveals, adaptive CTA glow timing, click analytics -->
   <script>
     const storageKey = 'theme';
     const themeToggle = document.getElementById('themeToggle');
@@ -296,14 +334,27 @@
       if(typeof gtag==='function') gtag('event','toggle_theme',{theme:next});
     });
 
+    // Mark page as ready for hero animation
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('ready');
+
+      // Start CTA shimmer + adaptive glow once
+      document.querySelectorAll('.shimmer-once').forEach(btn => {
+        const isDark = document.documentElement.classList.contains('dark');
+        btn.style.animation = `shimmer 1.4s ease-out 1, ${isDark ? 'buttonGlowDark' : 'buttonGlowLight'} 2s ease-out 1.2s 1`;
+        btn.addEventListener('animationend', () => { btn.style.backgroundImage = ''; }, { once: true });
+      });
+    });
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // IntersectionObserver to reveal .fade-in elements
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
     document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
-    // Click analytics: resume_click for on-site PDFs, outbound_click for external destinations
+    // Click analytics
     document.addEventListener('click', (e)=>{
       const link = e.target.closest('a[data-analytics]');
       if(!link) return;
