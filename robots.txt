@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jnichter.com/sitemap.xml
